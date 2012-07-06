@@ -1,5 +1,7 @@
 # ruby-pinyin: 将中国汉字转化为对应的拼音
 
+这个工具最初是[LeoChen工作](http://www.upulife.com/leo/?p=260)的包装，经过一段时间的修改，修复了其中的bug, 增加了单元测试并且重构了大部分代码.
+
 Example:
 
         # encoding: utf-8
