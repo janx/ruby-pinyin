@@ -7,8 +7,10 @@ Example:
 
         # return ['JIE', 'CAO']
         PinYin.of_string('节操')
+
         # return ['JIE2', 'CAO1']
         PinYin.of_string('节操', true)
+
         # return %w(GAN XIE party GAN XIE guo jia)
         PinYin.of_string('感谢party感谢guo jia')
 
@@ -22,7 +24,7 @@ Example:
         # PinYin.sentence保留标点符号
         PinYin.sentence('感谢party, 感谢guo家!')
 
-更多的例子和参数请参考[测试用例](https://github.com/janx/ruby-pinyin/raw/master/test/pinyin_test.rb)
+更多的例子和参数请参考[测试用例](https://github.com/janx/ruby-pinyin/blob/master/test/pinyin_test.rb)
 
 ## 测试平台 ##
 
