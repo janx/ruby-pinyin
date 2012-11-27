@@ -32,6 +32,9 @@ Example:
 
 运行测试: `ruby -Ilib test/pinyin_test.rb`
 
+已在如下平台测试:
+
+* MRI 1.9.3-p327
 * MRI 1.9.3-p125
 * MRI 1.9.2-p290
 * MRI 1.8.7-p358
