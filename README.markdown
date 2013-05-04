@@ -54,6 +54,10 @@ Example:
 * 各种报告bug, 提供建议  (github issue tracker)
 * 各种修bug, 实现feature (github pull request)
 
+## Contributors ##
+
+* [Martin91](https://github.com/Martin91)
+
 ## Thanks ##
 
 * [LeoChen的脚本](http://www.upulife.com/leo/?p=260)
