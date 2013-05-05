@@ -51,7 +51,7 @@ module PinYin
       result
     end
 
-    def sentence(str, tone=false)
+    def sentence(str, tone=nil)
       of_string(str, tone, true).join(' ')
     end
 
