@@ -77,8 +77,12 @@ class PinYinTest < Test::Unit::TestCase
     assert_equal 'gan xie party, gan xie guo jia!', PinYin.sentence('感谢party, 感谢guo家!')
   end
 
-  def test_get_pinyin_sentence_with_tone
-    assert_equal 'gan3 xie4 party, gan3 xie4 guo jia1!', PinYin.sentence('感谢party, 感谢guo家!', true)
+  def test_get_pinyin_sentence_with_ascii_tone
+    assert_equal 'gan3 xie4 party, gan3 xie4 guo jia1!', PinYin.sentence('感谢party, 感谢guo家!', :ascii)
+  end
+
+  def test_get_pinyin_sentence_with_unicode_tone
+    assert_equal 'gǎn xiè party, gǎn xiè guo jiā!', PinYin.sentence('感谢party, 感谢guo家!', :unicode)
   end
 
   def test_override_files
