@@ -6,6 +6,7 @@
 * 能够显示数字或者UNICODE音调(eg: 'cao1', 'cāo')
 * 丰富的API
 * 支持中英文标点混合字符串
+* 支持自定义读音
 
 ## Examples
 
@@ -34,6 +35,9 @@
         # return 'gan xie party, gan xie guo jia!'
         # PinYin.sentence保留标点符号
         PinYin.sentence('感谢party, 感谢guo家!')
+
+        # override readings with your own data file
+        PinYin.override_files = [File.expand_path('../my.dat', __FILE__)]
 
 更多的例子和参数请参考[测试用例](https://github.com/janx/ruby-pinyin/blob/master/test/pinyin_test.rb)
 

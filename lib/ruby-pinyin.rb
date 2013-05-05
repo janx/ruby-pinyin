@@ -3,14 +3,22 @@ require 'ruby-pinyin/value'
 module PinYin
   class <<self
 
+    def override_files
+      @override_files || []
+    end
+
+    def override_files=(files)
+      @override_files = files
+      @codes = nil
+    end
+
     def codes
       return @codes if @codes
 
       @codes = {}
       src = File.expand_path('../ruby-pinyin/Mandarin.dat', __FILE__)
-      File.readlines(src).map do |line|
-        code, ascii, unicode = line.split(/\s+/)
-        @codes[code] = [ascii, unicode]
+      override_files.unshift(src).each do |file|
+        load_codes_from(file)
       end
       @codes
     end
@@ -56,6 +64,15 @@ module PinYin
     end
 
     private
+
+    def load_codes_from(file)
+      File.readlines(file).map do |line|
+        code, ascii, unicode = line.split(/\s+/)
+        @codes[code] ||= []
+        @codes[code][0] = ascii if ascii
+        @codes[code][1] = unicode if unicode
+      end
+    end
 
     def format(readings, tone)
       case tone

@@ -80,4 +80,12 @@ class PinYinTest < Test::Unit::TestCase
   def test_get_pinyin_sentence_with_tone
     assert_equal 'gan3 xie4 party, gan3 xie4 guo jia1!', PinYin.sentence('感谢party, 感谢guo家!', true)
   end
+
+  def test_override_files
+    PinYin.override_files = [File.expand_path('../my.dat', __FILE__)]
+    assert_equal ['yan3'], PinYin.of_string('广', :ascii)
+
+    PinYin.override_files = nil
+    assert_equal ['guang3'], PinYin.of_string('广', :ascii)
+  end
 end
