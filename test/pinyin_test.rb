@@ -19,7 +19,7 @@ class PinYinTest < Test::Unit::TestCase
   end
 
   def test_get_pinyin_of_multiple_pronunciation_character
-    assert_equal ['HAO3'], PinYin.of_string('好', true) # code 597D, value HAO3, HAO4
+    assert_equal ['hao3'], PinYin.of_string('好', true) # code 597D, value hao3
   end
 
   def test_get_pinyin_of_empty_string
@@ -28,11 +28,11 @@ class PinYinTest < Test::Unit::TestCase
   end
 
   def test_get_pinyin_of_chinese_string
-    assert_equal ['JIE', 'CAO'], PinYin.of_string('节操')
+    assert_equal ['jie', 'cao'], PinYin.of_string('节操')
   end
 
   def test_get_pinyin_of_chinese_string_with_tone
-    assert_equal ['JIE2', 'CAO1'], PinYin.of_string('节操', true)
+    assert_equal ['jie2', 'cao1'], PinYin.of_string('节操', true)
   end
 
   def test_get_pinyin_of_english_phrase
@@ -41,7 +41,7 @@ class PinYinTest < Test::Unit::TestCase
 
   def test_get_pinyin_of_mixed_string
     pinyin = PinYin.of_string '感谢party感谢guo jia'
-    assert_equal %w(GAN XIE party GAN XIE guo jia), pinyin
+    assert_equal %w(gan xie party gan xie guo jia), pinyin
     assert_equal true, pinyin.all? {|word| word.class == PinYin::Value}
   end
 
