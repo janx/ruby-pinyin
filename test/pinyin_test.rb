@@ -1,6 +1,6 @@
 # encoding: utf-8
 require 'test/unit'
-require 'ruby-pinyin'
+require File.expand_path('../../lib/ruby-pinyin', __FILE__)
 
 class PinYinTest < Test::Unit::TestCase
   def test_value_initialize
@@ -47,6 +47,10 @@ class PinYinTest < Test::Unit::TestCase
 
   def test_permlink
     assert_equal 'gan-xie-party-gan-xie-guo-jia', PinYin.permlink('感谢party感谢guo jia')
+  end
+
+  def test_permlink_with_customized_seperator
+    assert_equal 'gan+xie+party+gan+xie+guo+jia', PinYin.permlink('感谢party感谢guo jia', '+')
   end
 
   def test_abbr

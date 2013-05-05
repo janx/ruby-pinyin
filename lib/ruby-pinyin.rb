@@ -37,8 +37,8 @@ module PinYin
       res.map {|phrase| phrase.split(/\s+/)}.flatten
     end
 
-    def permlink(str)
-      of_string(str).map(&:downcase).join('-')
+    def permlink(str, sep='-')
+      of_string(str).map(&:downcase).join(sep)
     end
 
     def abbr(str, except_lead=false, except_english=true)
