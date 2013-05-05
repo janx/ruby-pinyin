@@ -8,6 +8,10 @@
 * 支持中英文标点混合字符串
 * 支持自定义读音
 
+## Installation
+
+        gem install ruby-pinyin
+
 ## Examples
 
         # encoding: utf-8
