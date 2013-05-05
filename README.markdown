@@ -1,19 +1,28 @@
 # ruby-pinyin: 将中国汉字转化为对应的拼音
 
-这个工具最初是[LeoChen工作](http://www.upulife.com/leo/?p=260)的包装，经过一段时间的修改，修复了其中的bug, 增加了单元测试并且重构了大部分代码.
+## Features
 
-Example:
+* 使用最新的UNICODE数据(6.2.0 published at 2012/08/17)
+* 能够显示数字或者UNICODE音调(eg: 'cao1', 'cāo')
+* 丰富的API
+* 支持中英文标点混合字符串
+
+## Examples
 
         # encoding: utf-8
         require 'ruby-pinyin'
 
-        # return ['JIE', 'CAO']
+        # return ['jie', 'cao']
         PinYin.of_string('节操')
 
-        # return ['JIE2', 'CAO1']
+        # return ['jie2', 'cao1']
         PinYin.of_string('节操', true)
+        PinYin.of_string('节操', :ascii)
 
-        # return %w(GAN XIE party GAN XIE guo jia)
+        # return ["jié", "cāo"]
+        PinYin.of_string('节操', :unicode)
+
+        # return %w(gan xie party gan xie guo jia)
         PinYin.of_string('感谢party感谢guo jia')
 
         # return 'gan-xie-party-gan-xie-guo-jia'
@@ -34,16 +43,13 @@ Example:
 
 已在如下平台测试:
 
+* MRI 2.0.0-p0
 * MRI 1.9.3-p327
 * MRI 1.9.3-p125
 * MRI 1.9.2-p290
 * MRI 1.8.7-p358
 * Ruby Enterprise Edition 1.8.7-2012.02
-
-## TODO ##
-
-* 支持utf-8以外的编码
-* 为多音字提供api
+* JRuby-1.7.3
 
 ## 欢迎任何帮助 ##
 

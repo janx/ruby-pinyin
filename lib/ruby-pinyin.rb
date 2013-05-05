@@ -6,24 +6,25 @@ module PinYin
     def codes
       return @codes if @codes
 
+      @codes = {}
       src = File.expand_path('../ruby-pinyin/Mandarin.dat', __FILE__)
-
-      # 不考虑多音字的情况, e.g. ['597D', 'HAO3', 'HAO4']转化成['597D',
-      # 'HAO3']再存入codes hash
-      @codes = Hash[ File.readlines(src).map {|line| line.split(/\s+/)[0,2]} ]
+      File.readlines(src).map do |line|
+        code, ascii, unicode = line.split(/\s+/)
+        @codes[code] = [ascii, unicode]
+      end
+      @codes
     end
 
-    def of_string(str, tone=false, include_punctuations=false)
+    def of_string(str, tone=nil, include_punctuations=false)
       res = []
       return res unless str && !str.empty?
 
       str.unpack('U*').each_with_index do |t,idx|
         code = sprintf('%x',t).upcase
-        val = codes[code]
+        readings = codes[code]
 
-        if val
-          val = val.gsub(/\d/,'') unless tone
-          res << Value.new(val, false)
+        if readings
+          res << Value.new(format(readings, tone), false)
         else
           val = [t].pack('U*')
           if val =~ /^[_0-9a-zA-Z\s]*$/ # 复原，去除特殊字符,如全角符号等。
@@ -38,7 +39,7 @@ module PinYin
     end
 
     def permlink(str, sep='-')
-      of_string(str).map(&:downcase).join(sep)
+      of_string(str).join(sep)
     end
 
     def abbr(str, except_lead=false, except_english=true)
@@ -47,12 +48,24 @@ module PinYin
         w = (except_lead && i == 0) || (except_english && word.english?) ? word : word[0]
         result << w
       end
-      result.downcase
+      result
     end
 
     def sentence(str, tone=false)
-      of_string(str, tone, true).map(&:downcase).join(' ')
+      of_string(str, tone, true).join(' ')
     end
 
+    private
+
+    def format(readings, tone)
+      case tone
+      when :unicode
+        readings[1]
+      when :ascii, true
+        readings[0]
+      else
+        readings[0].gsub(/\d/,'')
+      end
+    end
   end
 end

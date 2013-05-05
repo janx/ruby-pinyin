@@ -35,6 +35,14 @@ class PinYinTest < Test::Unit::TestCase
     assert_equal ['jie2', 'cao1'], PinYin.of_string('节操', true)
   end
 
+  def test_get_pinyin_of_chinese_string_with_ascii_tone
+    assert_equal ['jie2', 'cao1'], PinYin.of_string('节操', :ascii)
+  end
+
+  def test_get_pinyin_of_chinese_string_with_unicode_tone
+    assert_equal ["jié", "cāo"], PinYin.of_string('节操', :unicode)
+  end
+
   def test_get_pinyin_of_english_phrase
     assert_equal %w(And the winner is), PinYin.of_string('And the winner is ...')
   end
