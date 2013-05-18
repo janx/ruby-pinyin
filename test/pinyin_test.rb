@@ -77,6 +77,10 @@ class PinYinTest < Test::Unit::TestCase
     assert_equal 'gan xie party, gan xie guo jia!', PinYin.sentence('感谢party, 感谢guo家!')
   end
 
+  def test_get_pinyin_sentence_with_unicode_punctuation
+    assert_equal 'hello, world', PinYin.sentence('hello， world')
+  end
+
   def test_get_pinyin_sentence_with_ascii_tone
     assert_equal 'gan3 xie4 party, gan3 xie4 guo jia1!', PinYin.sentence('感谢party, 感谢guo家!', :ascii)
   end

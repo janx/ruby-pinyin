@@ -23,6 +23,16 @@ module PinYin
       @codes
     end
 
+    def punctuations
+      return @punctuations if @punctuations
+
+      @punctuations = {}
+      src = File.expand_path('../ruby-pinyin/Punctuations.dat', __FILE__)
+      load_punctuations_from(src)
+
+      @punctuations
+    end
+
     def of_string(str, tone=nil, include_punctuations=false)
       res = []
       return res unless str && !str.empty?
@@ -38,6 +48,7 @@ module PinYin
           if val =~ /^[_0-9a-zA-Z\s]*$/ # 复原，去除特殊字符,如全角符号等。
             (res.last && res.last.english? ? res.last : res) << Value.new(val, true) # 如果上一个字符也是非中文则与之合并
           elsif include_punctuations
+            val = [punctuations[code]].pack('H*') if punctuations.has_key?(code)
             (res.last ? res.last : res) << Value.new(val, false)
           end
         end
@@ -71,6 +82,13 @@ module PinYin
         @codes[code] ||= []
         @codes[code][0] = ascii if ascii
         @codes[code][1] = unicode if unicode
+      end
+    end
+
+    def load_punctuations_from(file)
+      File.readlines(file).map do |line|
+        from, to = line.split(/\s+/)
+        @punctuations[from] = to
       end
     end
 
