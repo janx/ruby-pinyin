@@ -6,6 +6,7 @@
 * 能够显示数字或者UNICODE音调(eg: 'cao1', 'cāo')
 * 丰富的API
 * 支持中英文标点混合字符串
+* 中文标点转为英文标点
 * 支持自定义读音
 
 ## Installation
@@ -37,8 +38,8 @@
         PinYin.abbr('感谢party感谢guo jia')
 
         # return 'gan xie party, gan xie guo jia!'
-        # PinYin.sentence保留标点符号
-        PinYin.sentence('感谢party, 感谢guo家!')
+        # PinYin.sentence保留标点符号, 同时用对应英文标点代替中文标点
+        PinYin.sentence('感谢party， 感谢guo家！')
 
         # override readings with your own data file
         PinYin.override_files = [File.expand_path('../my.dat', __FILE__)]
