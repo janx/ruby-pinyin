@@ -69,6 +69,10 @@
 * 各种报告bug, 提供建议  (github issue tracker)
 * 各种修bug, 实现feature (github pull request)
 
+## LICENSE ##
+
+[MIT-LICENSE](https://github.com/janx/ruby-pinyin/blob/master/MIT-LICENSE)
+
 ## Contributors ##
 
 * [Martin91](https://github.com/Martin91)
