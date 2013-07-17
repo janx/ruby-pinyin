@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/janx/ruby-pinyin"
   s.summary     = "Convert Chinese characters into pinyin."
   s.description = "Pinyin is a romanization system (phonemic notation) of Chinese characters, this gem helps you to convert Chinese characters into pinyin form."
-  s.license     = ['MIT']
+  s.license     = 'MIT'
 
   s.files = Dir["{lib}/**/*"] + ["MIT-LICENSE", "README.markdown"]
 end
