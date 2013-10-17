@@ -2,6 +2,7 @@
 # encoding: UTF-8
 
 input = ARGV[0] || File.expand_path('../unihan.txt', __FILE__)
+exceptions_input = File.expand_path('../exceptions.txt', __FILE__)
 output = ARGV[1] || File.expand_path('../../lib/ruby-pinyin/Mandarin.dat', __FILE__)
 count = 0
 
@@ -24,6 +25,12 @@ def to_ascii(reading)
   reading
 end
 
+exceptions = {}
+File.readlines(exceptions_input).each do |l|
+  code, ascii_reading, reading, _ = l.split(/\s+/)
+  exceptions[code] = [ascii_reading, reading]
+end
+
 File.open(output, 'w') do |out|
   File.readlines(input).each do |line|
     next if line =~ /^#/
@@ -31,7 +38,12 @@ File.open(output, 'w') do |out|
     code, type, reading = line.split(/\s+/)
     if 'kMandarin' == type
       count += 1
-      out.printf "%s %s %s\n", code[2..-1], to_ascii(reading), reading
+      code = code[2..-1]
+      if e = exceptions[code]
+        out.printf "%s %s %s\n", code, e[0], e[1]
+      else
+        out.printf "%s %s %s\n", code, to_ascii(reading), reading
+      end
     end
   end
 end
