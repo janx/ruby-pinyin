@@ -76,6 +76,7 @@
 ## Contributors ##
 
 * [Martin91](https://github.com/Martin91)
+* [jaxi](https://github.com/jaxi)
 
 ## Thanks ##
 
