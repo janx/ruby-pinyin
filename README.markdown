@@ -2,7 +2,7 @@
 
 ## Features
 
-* 使用最新的UNICODE数据(6.2.0 published at 2012/08/17)
+* 使用最新的UNICODE数据(6.3.0 published at 2013/02/26)
 * 能够显示数字或者UNICODE音调(eg: 'cao1', 'cāo')
 * 丰富的API
 * 支持中英文标点混合字符串
