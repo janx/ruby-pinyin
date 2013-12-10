@@ -6,9 +6,10 @@ module PinYin
 
     attr_accessor :backend
 
-    def of_string(str, tone=nil, include_punctuations=false)
+    def romanize(str, tone=nil, include_punctuations=false)
       backend.romanize(str, tone, include_punctuations)
     end
+    alias :of_string :romanize
 
     def permlink(str, sep='-')
       of_string(str).join(sep)
