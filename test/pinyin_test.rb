@@ -14,10 +14,6 @@ class PinYinTest < Test::Unit::TestCase
     assert_equal PinYin::Value, ary[0].class
   end
 
-  def test_codes_loaded
-    assert_equal false, PinYin.codes.empty?
-  end
-
   def test_get_pinyin_of_multiple_pronunciation_character
     assert_equal ['hao3'], PinYin.of_string('好', true) # code 597D, value hao3
   end
@@ -89,11 +85,11 @@ class PinYinTest < Test::Unit::TestCase
     assert_equal 'gǎn xiè party, gǎn xiè guo jiā!', PinYin.sentence('感谢party, 感谢guo家!', :unicode)
   end
 
-  def test_override_files
-    PinYin.override_files = [File.expand_path('../my.dat', __FILE__)]
-    assert_equal ['yan3'], PinYin.of_string('广', :ascii)
+  #def test_override_files
+    #PinYin.override_files = [File.expand_path('../my.dat', __FILE__)]
+    #assert_equal ['yan3'], PinYin.of_string('广', :ascii)
 
-    PinYin.override_files = nil
-    assert_equal ['guang3'], PinYin.of_string('广', :ascii)
-  end
+    #PinYin.override_files = nil
+    #assert_equal ['guang3'], PinYin.of_string('广', :ascii)
+  #end
 end

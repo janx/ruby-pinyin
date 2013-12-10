@@ -2,3 +2,4 @@
 log/*.log
 pkg/
 *.gem
+.tags
