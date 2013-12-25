@@ -14,7 +14,11 @@ module PinYin
 
       def romanize(str, tone=nil, include_punctuations=false)
         words = segment str
-        words.map {|w| dictionary[w] || @simple.romanize(w, tone, include_punctuations)}.join(' ')
+
+        base = @simple.romanize(str, tone, include_punctuations)
+        patch = words.map {|w| format(w, tone) }.flatten
+
+        apply base, patch
       end
 
       def segment(str)
@@ -35,11 +39,47 @@ module PinYin
         @dict = {}
         src = File.expand_path('../words.dat', __FILE__)
         File.readlines(src).map do |line|
-          word, pinyin = line.strip.split(/\s+/, 2)
-          @dict[word] = pinyin
+          word, ascii, unicode = line.strip.split(',')
+          @dict[word] = [ascii, unicode]
         end
 
         @dict
+      end
+
+      def get_pinyin(word, tone)
+        readings = dictionary[word]
+        return unless readings
+
+        case tone
+        when :unicode
+          readings[1]
+        when :ascii, true
+          readings[0]
+        else
+          readings[0].gsub(/\d/, '')
+        end
+      end
+
+      def format(word, tone)
+        pinyin = get_pinyin(word, tone)
+        return pinyin.split(' ') if pinyin
+
+        #如果是个英文单词，直接返回，否则返回与词等长的nil数组
+        word =~ /^[_0-9a-zA-Z\s]*$/ ? word : [nil]*word.size
+      end
+
+      def apply(base, patch)
+        result = []
+        base.each_with_index do |char, i|
+          if patch[i].nil?
+            result.push char
+          elsif char =~ Punctuation.regexp
+            result.push "#{patch[i]}#{$1}"
+          else
+            result.push patch[i]
+          end
+        end
+        result
       end
 
     end

@@ -1,4 +1,5 @@
 require 'ruby-pinyin/value'
+require 'ruby-pinyin/punctuation'
 require 'ruby-pinyin/backend'
 
 module PinYin
@@ -31,4 +32,4 @@ module PinYin
   end
 end
 
-PinYin.backend = PinYin::Backend::Simple.new
+PinYin.backend = PinYin::Backend::MMSeg.new

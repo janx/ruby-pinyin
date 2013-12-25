@@ -21,7 +21,7 @@ module PinYin
             if val =~ /^[_0-9a-zA-Z\s]*$/ # 复原，去除特殊字符,如全角符号等。
               (res.last && res.last.english? ? res.last : res) << Value.new(val, true) # 如果上一个字符也是非中文则与之合并
             elsif include_punctuations
-              val = [punctuations[code]].pack('H*') if punctuations.has_key?(code)
+              val = [Punctuation[code]].pack('H*') if Punctuation.include?(code)
               (res.last ? res.last : res) << Value.new(val, false)
             end
           end
@@ -31,23 +31,6 @@ module PinYin
       end
 
       private
-
-      def punctuations
-        return @punctuations if @punctuations
-
-        @punctuations = {}
-        src = File.expand_path('../Punctuations.dat', __FILE__)
-        load_punctuations_from(src)
-
-        @punctuations
-      end
-
-      def load_punctuations_from(file)
-        File.readlines(file).map do |line|
-          from, to = line.split(/\s+/)
-          @punctuations[from] = to
-        end
-      end
 
       def codes
         return @codes if @codes
