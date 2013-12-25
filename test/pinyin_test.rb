@@ -73,4 +73,17 @@ class PinYinTest < Minitest::Test
     assert_equal 'gǎn xiè party, gǎn xiè guo jiā!', PinYin.sentence('感谢party, 感谢guo家!', :unicode)
   end
 
+  def test_get_pinyin_of_polyphone
+    assert_equal ["zhǎng", "jìn"], PinYin.of_string('长进', :unicode)
+    assert_equal ["cháng", "fāng", "xíng"], PinYin.of_string('长方形', :unicode)
+    assert_equal ["yì", "zhī"], PinYin.of_string('一只', :unicode)
+    assert_equal ["shǔ", "shù"], PinYin.of_string('数数', :unicode)
+    #assert_equal [], PinYin.of_string('一位姓解的名医', :unicode)
+    assert_equal ["jiāng", "jūn"], PinYin.of_string('将军', :unicode)
+    assert_equal ["dà", "jiàng"], PinYin.of_string('大将', :unicode)
+    assert_equal ["dài", "fū"], PinYin.of_string('大夫', :unicode)
+    assert_equal ["shān", "dài", "wáng"], PinYin.of_string('山大王', :unicode)
+    assert_equal ["máo", "fà"], PinYin.of_string('毛发', :unicode)
+  end
+
 end
