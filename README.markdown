@@ -29,6 +29,9 @@
         # return ["jié", "cāo"]
         PinYin.of_string('节操', :unicode)
 
+        # 正确处理多音字: return ["nán", "jīng", "shì", "cháng", "jiāng", "dà", "qiáo"]
+        PinYin.of_string('南京市长江大桥', :unicode)
+
         # return %w(gan xie party gan xie guo jia)
         PinYin.of_string('感谢party感谢guo jia')
 
