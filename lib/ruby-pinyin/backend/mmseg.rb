@@ -13,6 +13,8 @@ module PinYin
       end
 
       def romanize(str, tone=nil, include_punctuations=false)
+        return [] unless str && str.length > 0
+
         words = segment str
 
         base = @simple.romanize(str, tone, include_punctuations)
