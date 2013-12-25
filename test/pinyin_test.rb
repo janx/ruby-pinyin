@@ -74,6 +74,8 @@ class PinYinTest < Minitest::Test
   end
 
   def test_get_pinyin_of_polyphone
+    assert_equal ["cháng", "duǎn"], PinYin.of_string('长短', :unicode)
+    assert_equal ["chǎng", "zhǎng", "duǎn", "qī", "chū", "chāi"], PinYin.of_string('厂长短期出差', :unicode)
     assert_equal ["nán", "jīng", "shì", "cháng", "jiāng", "dà", "qiáo"], PinYin.of_string('南京市长江大桥', :unicode)
     assert_equal ["zhǎng", "jìn"], PinYin.of_string('长进', :unicode)
     assert_equal ["cháng", "fāng", "xíng"], PinYin.of_string('长方形', :unicode)
