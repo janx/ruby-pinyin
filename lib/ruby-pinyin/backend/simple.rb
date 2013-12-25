@@ -36,7 +36,7 @@ module PinYin
         return @codes if @codes
 
         @codes = {}
-        src = File.expand_path('../Mandarin.dat', __FILE__)
+        src = File.expand_path('../../data/Mandarin.dat', __FILE__)
         @override_files.unshift(src).each do |file|
           load_codes_from(file)
         end

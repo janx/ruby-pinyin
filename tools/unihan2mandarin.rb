@@ -3,7 +3,7 @@
 
 input = ARGV[0] || File.expand_path('../unihan.txt', __FILE__)
 exceptions_input = File.expand_path('../exceptions.txt', __FILE__)
-output = ARGV[1] || File.expand_path('../../lib/ruby-pinyin/Mandarin.dat', __FILE__)
+output = ARGV[1] || File.expand_path('../../lib/ruby-pinyin/data/Mandarin.dat', __FILE__)
 count = 0
 
 ASCII_TABLE = {

@@ -8,7 +8,7 @@ module PinYin
         @simple = Simple.new
 
         RMMSeg::Dictionary.dictionaries.delete_if {|(type, path)| type == :words}
-        RMMSeg::Dictionary.dictionaries.push [:words, File.expand_path('../words.dic', __FILE__)]
+        RMMSeg::Dictionary.dictionaries.push [:words, File.expand_path('../../data/words.dic', __FILE__)]
         RMMSeg::Dictionary.load_dictionaries
       end
 
@@ -39,7 +39,7 @@ module PinYin
         return @dict if @dict
 
         @dict = {}
-        src = File.expand_path('../words.dat', __FILE__)
+        src = File.expand_path('../../data/words.dat', __FILE__)
         File.readlines(src).map do |line|
           word, ascii, unicode = line.strip.split(',')
           @dict[word] = [ascii, unicode]
