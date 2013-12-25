@@ -14,5 +14,5 @@ Gem::Specification.new do |s|
   s.description = "Pinyin is a romanization system (phonemic notation) of Chinese characters, this gem helps you to convert Chinese characters into pinyin form."
   s.license     = 'MIT'
 
-  s.files = Dir["{lib}/**/*"] + ["MIT-LICENSE", "README.markdown"]
+  s.files = Dir["{lib}/**/*"] + ["LICENSE", "README.markdown"]
 end
