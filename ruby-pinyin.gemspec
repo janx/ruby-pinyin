@@ -15,4 +15,6 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   s.files = Dir["{lib}/**/*"] + ["LICENSE", "README.markdown"]
+
+  s.add_runtime_dependency('rmmseg-cpp', ['~> 0.2.9'])
 end
