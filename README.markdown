@@ -1,4 +1,4 @@
-# ruby-pinyin: 将中国汉字转化为对应的拼音
+# ruby-pinyin: 将汉字转化为拼音
 
 ## Features
 
