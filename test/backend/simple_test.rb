@@ -1,6 +1,6 @@
 require 'helper'
 
-class SimpleBackendTest < Test::Unit::TestCase
+class SimpleBackendTest < Minitest::Test
 
   def test_override_files
     backend = PinYin::Backend::Simple.new
