@@ -76,9 +76,9 @@ module PinYin
           if patch[i].nil?
             result.push char
           elsif char =~ Punctuation.regexp
-            result.push "#{patch[i]}#{$1}"
+            result.push Value.new("#{patch[i]}#{$1}", char.english?)
           else
-            result.push patch[i]
+            result.push Value.new(patch[i], char.english?)
           end
         end
         result
