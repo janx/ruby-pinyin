@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Ruby-pinyin by janx</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Ruby-pinyin</h1>
+        <p class="header">中文汉字转拼音,　支持中英文符号混合词语。Pinyin is a romanization system (phonemic notation) of Chinese characters, this gem helps you to convert Chinese characters into pinyin form.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/janx/ruby-pinyin/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/janx/ruby-pinyin/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/janx/ruby-pinyin">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/janx">janx</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="ruby-pinyin-%E5%B0%86%E6%B1%89%E5%AD%97%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%8B%BC%E9%9F%B3" class="anchor" href="#ruby-pinyin-%E5%B0%86%E6%B1%89%E5%AD%97%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%8B%BC%E9%9F%B3"><span class="octicon octicon-link"></span></a>ruby-pinyin: 将汉字转化为拼音</h1>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>支持多音字</li>
+<li>使用最新的UNICODE数据(6.3.0 published at 2013/02/26)</li>
+<li>能够显示数字或者UNICODE音调(eg: 'cao1', 'cāo')</li>
+<li>丰富的API</li>
+<li>支持中英文标点混合字符串</li>
+<li>中文标点转为英文标点</li>
+<li>支持自定义读音</li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>    gem install ruby-pinyin
+</code></pre>
+
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<pre><code>    # encoding: utf-8
+    require 'ruby-pinyin'
+
+    # return ['jie', 'cao']
+    PinYin.of_string('节操')
+
+    # return ['jie2', 'cao1']
+    PinYin.of_string('节操', true)
+    PinYin.of_string('节操', :ascii)
+
+    # return ["jié", "cāo"]
+    PinYin.of_string('节操', :unicode)
+
+    # 正确处理多音字: return ["nán", "jīng", "shì", "cháng", "jiāng", "dà", "qiáo"]
+    PinYin.of_string('南京市长江大桥', :unicode)
+
+    # return %w(gan xie party gan xie guo jia)
+    PinYin.of_string('感谢party感谢guo jia')
+
+    # return 'gan-xie-party-gan-xie-guo-jia'
+    PinYin.permlink('感谢party感谢guo jia')
+
+    # return 'gxpartygxguojia'
+    PinYin.abbr('感谢party感谢guo jia')
+
+    # return 'gan xie party, gan xie guo jia!'
+    # PinYin.sentence保留标点符号, 同时用对应英文标点代替中文标点
+    PinYin.sentence('感谢party， 感谢guo家！')
+
+    # override readings with your own data file
+    PinYin.override_files = [File.expand_path('../my.dat', __FILE__)]
+</code></pre>
+
+<p>更多的例子和参数请参考<a href="https://github.com/janx/ruby-pinyin/blob/master/test/pinyin_test.rb">测试用例</a></p>
+
+<h2>
+<a name="tested-platforms" class="anchor" href="#tested-platforms"><span class="octicon octicon-link"></span></a>Tested Platforms</h2>
+
+<ul>
+<li>MRI 2.0.0-p0</li>
+<li>MRI 1.9.3-p327</li>
+<li>MRI 1.9.3-p125</li>
+<li>MRI 1.9.2-p290</li>
+<li>MRI 1.8.7-p358</li>
+<li>Ruby Enterprise Edition 1.8.7-2012.02</li>
+<li>JRuby-1.7.3</li>
+</ul><h2>
+<a name="%E6%AC%A2%E8%BF%8E%E4%BB%BB%E4%BD%95%E5%B8%AE%E5%8A%A9" class="anchor" href="#%E6%AC%A2%E8%BF%8E%E4%BB%BB%E4%BD%95%E5%B8%AE%E5%8A%A9"><span class="octicon octicon-link"></span></a>欢迎任何帮助</h2>
+
+<p>如果你喜欢这个项目，请通过(不限)以下方式帮助她!</p>
+
+<ul>
+<li>各种使用</li>
+<li>各种宣传</li>
+<li>各种报告bug, 提供建议  (github issue tracker)</li>
+<li>各种修bug, 实现feature (github pull request)</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>LICENSE</h2>
+
+<p><a href="https://github.com/janx/ruby-pinyin/blob/master/LICENSE">BSD LICENSE</a></p>
+
+<p>ruby-pinyin中的拼音数据由作者整理自互联网，你可以在ruby-pinyin之外的地方任意使用，但是请注明数据来自ruby-pinyin :-)</p>
+
+<h2>
+<a name="contributors" class="anchor" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h2>
+
+<ul>
+<li><a href="https://github.com/Martin91">Martin91</a></li>
+<li><a href="https://github.com/jaxi">jaxi</a></li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-46705417-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
