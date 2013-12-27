@@ -1,4 +1,12 @@
-# ruby-pinyin: 将汉字转化为拼音
+# ruby-pinyin: 支持多音字的汉字转拼音工具
+
+ruby-pinyin: zhī chí duō yīn zì de hàn zì zhuǎn pīn yīn gōng jù
+
+ruby-pinyin可以把汉字转化为对应的拼音，并能够较好的处理多音字的情况。比如：
+
+        PinYin.of_string('南京市长江大桥', :ascii)
+
+能够正确的将“长”转为"chang2", 而不是"zhang3".
 
 ## Features
 
@@ -13,6 +21,10 @@
 ## Installation
 
         gem install ruby-pinyin
+
+或者把ruby-pinyin加入你的Gemfile:
+
+        gem 'ruby-pinyin'
 
 ## Examples
 
@@ -49,16 +61,6 @@
         PinYin.override_files = [File.expand_path('../my.dat', __FILE__)]
 
 更多的例子和参数请参考[测试用例](https://github.com/janx/ruby-pinyin/blob/master/test/pinyin_test.rb)
-
-## Tested Platforms ##
-
-* MRI 2.0.0-p0
-* MRI 1.9.3-p327
-* MRI 1.9.3-p125
-* MRI 1.9.2-p290
-* MRI 1.8.7-p358
-* Ruby Enterprise Edition 1.8.7-2012.02
-* JRuby-1.7.3
 
 ## 欢迎任何帮助 ##
 
