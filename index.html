@@ -17,7 +17,7 @@
     <div class="wrapper">
       <header>
         <h1 class="header">Ruby-pinyin</h1>
-        <p class="header">中文汉字转拼音,　支持中英文符号混合词语。Pinyin is a romanization system (phonemic notation) of Chinese characters, this gem helps you to convert Chinese characters into pinyin form.</p>
+        <p class="header">支持多音字的汉字转拼音工具。</p>
 
         <ul>
           <li class="download"><a class="buttons" href="https://github.com/janx/ruby-pinyin/zipball/master">Download ZIP</a></li>
@@ -31,7 +31,13 @@
       </header>
       <section>
         <h1>
-<a name="ruby-pinyin-%E5%B0%86%E6%B1%89%E5%AD%97%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%8B%BC%E9%9F%B3" class="anchor" href="#ruby-pinyin-%E5%B0%86%E6%B1%89%E5%AD%97%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%8B%BC%E9%9F%B3"><span class="octicon octicon-link"></span></a>ruby-pinyin: 将汉字转化为拼音</h1>
+<a name="ruby-pinyin-%E6%94%AF%E6%8C%81%E5%A4%9A%E9%9F%B3%E5%AD%97%E7%9A%84%E6%B1%89%E5%AD%97%E8%BD%AC%E6%8B%BC%E9%9F%B3%E5%B7%A5%E5%85%B7" class="anchor" href="#ruby-pinyin-%E6%94%AF%E6%8C%81%E5%A4%9A%E9%9F%B3%E5%AD%97%E7%9A%84%E6%B1%89%E5%AD%97%E8%BD%AC%E6%8B%BC%E9%9F%B3%E5%B7%A5%E5%85%B7"><span class="octicon octicon-link"></span></a>ruby-pinyin: 支持多音字的汉字转拼音工具</h1>
+
+<p>ruby-pinyin可以把汉字转化为对应的拼音，并能够较好的处理多音字的情况。比如：</p>
+
+<p><code>PinYin.of_string('南京市长江大桥', :ascii)</code></p>
+
+<p>能够正确的将“长”转为"chang2", 而不是"zhang3".</p>
 
 <h2>
 <a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
@@ -47,7 +53,12 @@
 </ul><h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<pre><code>    gem install ruby-pinyin
+<pre lang="shell"><code>    gem install ruby-pinyin
+</code></pre>
+
+<p>或者把ruby-pinyin加入你的Gemfile:</p>
+
+<pre><code>    gem 'ruby-pinyin'
 </code></pre>
 
 <h2>
@@ -89,17 +100,6 @@
 <p>更多的例子和参数请参考<a href="https://github.com/janx/ruby-pinyin/blob/master/test/pinyin_test.rb">测试用例</a></p>
 
 <h2>
-<a name="tested-platforms" class="anchor" href="#tested-platforms"><span class="octicon octicon-link"></span></a>Tested Platforms</h2>
-
-<ul>
-<li>MRI 2.0.0-p0</li>
-<li>MRI 1.9.3-p327</li>
-<li>MRI 1.9.3-p125</li>
-<li>MRI 1.9.2-p290</li>
-<li>MRI 1.8.7-p358</li>
-<li>Ruby Enterprise Edition 1.8.7-2012.02</li>
-<li>JRuby-1.7.3</li>
-</ul><h2>
 <a name="%E6%AC%A2%E8%BF%8E%E4%BB%BB%E4%BD%95%E5%B8%AE%E5%8A%A9" class="anchor" href="#%E6%AC%A2%E8%BF%8E%E4%BB%BB%E4%BD%95%E5%B8%AE%E5%8A%A9"><span class="octicon octicon-link"></span></a>欢迎任何帮助</h2>
 
 <p>如果你喜欢这个项目，请通过(不限)以下方式帮助她!</p>
@@ -112,7 +112,7 @@
 </ul><h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>LICENSE</h2>
 
-<p><a href="https://github.com/janx/ruby-pinyin/blob/master/LICENSE">BSD LICENSE</a></p>
+<p><a href="https://github.com/janx/ruby-pinyin/blob/master/LICENSE">BSD License</a></p>
 
 <p>ruby-pinyin中的拼音数据由作者整理自互联网，你可以在ruby-pinyin之外的地方任意使用，但是请注明数据来自ruby-pinyin :-)</p>
 
