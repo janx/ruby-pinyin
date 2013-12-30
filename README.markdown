@@ -62,6 +62,14 @@ ruby-pinyin可以把汉字转化为对应的拼音，并能够较好的处理多
 
 更多的例子和参数请参考[测试用例](https://github.com/janx/ruby-pinyin/blob/master/test/pinyin_test.rb)
 
+## 配置 ##
+
+ruby-pinyin有两个PinYin::Backend: `PinYin::Backend::Simple` 以及`PinYin::Backend::MMSeg`. 默认是使用MMSeg backend, 支持多音字识别。如果你不需要多音字识别，或是对内存使用要求很高，或是有其它任何原因想要fallback到Simple backend, 可以如下配置：
+
+```ruby
+PinYin.backend = PinYin::Backend::Simple.new
+```
+
 ## 欢迎任何帮助 ##
 
 如果你喜欢这个项目，请通过(不限)以下方式帮助她!
