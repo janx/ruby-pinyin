@@ -41,25 +41,30 @@ module PinYin
         @dict = {}
         src = File.expand_path('../../data/words.dat', __FILE__)
         File.readlines(src).map do |line|
-          word, ascii, unicode = line.strip.split(',')
-          @dict[word] = [ascii, unicode]
+          word, unicode = line.strip.split(',')
+          @dict[word] = unicode
         end
 
         @dict
       end
 
       def get_pinyin(word, tone)
-        readings = dictionary[word]
-        return unless readings
+        return unless dictionary[word]
 
         case tone
         when :unicode
-          readings[1]
+          dictionary[word]
         when :ascii, true
-          readings[0]
+          to_ascii dictionary[word], true
         else
-          readings[0].gsub(/\d/, '')
+          to_ascii dictionary[word], false
         end
+      end
+
+      def to_ascii(word, with_tone)
+        word.split(' ').map do |reading|
+          PinYin::Util.to_ascii(reading, with_tone)
+        end.join(' ')
       end
 
       def format(word, tone)
