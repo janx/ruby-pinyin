@@ -9,11 +9,11 @@ module PinYin
       'à' => ['a', 4], 'è' => ['e', 4], 'ì' => ['i', 4], 'ò' => ['o', 4], 'ù' => ['u', 4], 'ǜ' => ['v', 4]
     }
 
-    def to_ascii(reading)
+    def to_ascii(reading, with_tone=true)
       reading = reading.dup
 
       ASCIIMapping.each do |char, (ascii, tone)|
-        if reading.tr!(char, ascii)
+        if reading.tr!(char, ascii) && with_tone
           return reading.concat(tone.to_s)
         end
       end

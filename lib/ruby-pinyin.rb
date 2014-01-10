@@ -1,3 +1,4 @@
+require 'ruby-pinyin/util'
 require 'ruby-pinyin/value'
 require 'ruby-pinyin/punctuation'
 require 'ruby-pinyin/backend'

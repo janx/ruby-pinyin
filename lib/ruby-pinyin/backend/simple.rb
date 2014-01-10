@@ -45,21 +45,19 @@ module PinYin
 
       def load_codes_from(file)
         File.readlines(file).map do |line|
-          code, ascii, unicode = line.split(/\s+/)
-          @codes[code] ||= []
-          @codes[code][0] = ascii if ascii
-          @codes[code][1] = unicode if unicode
+          code, readings = line.split(' ')
+          @codes[code] = readings.split(',')
         end
       end
 
       def format(readings, tone)
         case tone
         when :unicode
-          readings[1]
-        when :ascii, true
           readings[0]
+        when :ascii, true
+          PinYin::Util.to_ascii(readings[0])
         else
-          readings[0].gsub(/\d/,'')
+          PinYin::Util.to_ascii(readings[0], false)
         end
       end
 
