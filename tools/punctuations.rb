@@ -17,7 +17,7 @@ def char_to_hex(c)
   c.ord.to_s(16).upcase
 end
 
-output = ARGV[1] || File.expand_path('../../lib/ruby-pinyin/Punctuations.dat', __FILE__)
+output = ARGV[1] || File.expand_path('../../lib/ruby-pinyin/data/Punctuations.dat', __FILE__)
 
 File.open(output, 'w') do |out|
   PUNCTUATIONS.each do |k, v|

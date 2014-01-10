@@ -1,10 +1,9 @@
 #!/usr/bin/env ruby
 # encoding: UTF-8
 
-input = ARGV[0] || File.expand_path('../unihan.txt', __FILE__)
 exceptions_input = File.expand_path('../exceptions.txt', __FILE__)
+input = ARGV[0] || File.expand_path('../unihan.txt', __FILE__)
 output = ARGV[1] || File.expand_path('../../lib/ruby-pinyin/data/Mandarin.dat', __FILE__)
-count = 0
 
 ASCII_TABLE = {
   'ā' => ['a', 1], 'ē' => ['e', 1], 'ī' => ['i', 1], 'ō' => ['o', 1], 'ū' => ['u', 1], 'ǖ' => ['v', 1],
@@ -25,25 +24,36 @@ def to_ascii(reading)
   reading
 end
 
-exceptions = {}
-File.readlines(exceptions_input).each do |l|
-  code, ascii_reading, reading, _ = l.split(/\s+/)
-  exceptions[code] = [ascii_reading, reading]
+def format(readings)
+  readings.scan(/[^,.:()0-9 ]+/)
 end
 
-File.open(output, 'w') do |out|
-  File.readlines(input).each do |line|
-    next if line =~ /^#/
+exceptions = {}
+File.readlines(exceptions_input).each do |l|
+  code, reading, _ = l.split(/\s+/)
+  exceptions[code] = reading
+end
 
-    code, type, reading = line.split(/\s+/)
-    if 'kMandarin' == type
-      count += 1
+hash = Hash.new {|h, k| h[k] = {}}
+File.readlines(input).each do |line|
+  next if line =~ /^#/
+
+  code, type, reading = line.strip.split(/\s+/, 3)
+  hash[code][type] = reading
+end
+
+count = 0
+File.open(output, 'w') do |out|
+  hash.each do |code, readings|
+    rs = readings['kHanyuPinlu'] || readings['kXHC1983'] || readings['kHanyuPinyin'] || readings['kMandarin']
+    if rs.nil?
+      puts "Skip non-chinese code: #{readings.inspect}"
+    else
       code = code[2..-1]
-      if e = exceptions[code]
-        out.printf "%s %s %s\n", code, e[0], e[1]
-      else
-        out.printf "%s %s %s\n", code, to_ascii(reading), reading
-      end
+      array = format rs
+      array.unshift(exceptions[code]) if exceptions.has_key?(code)
+      out.printf "%s %s\n", code, array.uniq.join(',')
+      count += 1
     end
   end
 end
