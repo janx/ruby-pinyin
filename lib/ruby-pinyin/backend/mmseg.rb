@@ -74,7 +74,15 @@ module PinYin
         return pinyin.split(' ') if pinyin
 
         #如果是个英文单词，直接返回，否则返回与词等长的nil数组
-        word =~ /^[_0-9a-zA-Z\s]*$/ ? word : [nil]*word.size
+        if word =~ /^[_0-9a-zA-Z\s]*$/
+          word
+        elsif word.respond_to? :force_encoding
+          # word has been encoded in UTF-8 already
+          [nil] * word.size
+        else
+          # For ruby 1.8, there is no native utf-8 support
+          [nil] * word.unpack('U*').size
+        end
       end
 
       def apply(base, patch)
