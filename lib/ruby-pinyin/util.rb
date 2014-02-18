@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 module PinYin
   module Util
     extend self
