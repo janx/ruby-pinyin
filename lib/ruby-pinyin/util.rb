@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 module PinYin
   module Util
     extend self
@@ -10,14 +12,15 @@ module PinYin
     }
 
     def to_ascii(reading, with_tone=true)
-      reading = reading.dup
-
       ASCIIMapping.each do |char, (ascii, tone)|
-        if reading.tr!(char, ascii) && with_tone
-          return reading.concat(tone.to_s)
+        if reading.include? char
+          if with_tone
+            return reading.sub(char, ascii).concat(tone.to_s)
+          else
+            return reading.sub(char, ascii)
+          end
         end
       end
-
       reading
     end
 
