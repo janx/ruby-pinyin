@@ -2,7 +2,7 @@
 
 require 'helper'
 
-class MMSegBackendTest < Minitest::Test
+class MMSegBackendTest < MiniTest::Unit::TestCase
 
   Backend = PinYin::Backend::MMSeg.new
 

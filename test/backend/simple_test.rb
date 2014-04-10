@@ -2,7 +2,7 @@
 
 require 'helper'
 
-class SimpleBackendTest < Minitest::Test
+class SimpleBackendTest < MiniTest::Unit::TestCase
 
   def setup
     @backend = PinYin::Backend::Simple.new

@@ -1,6 +1,6 @@
 require 'helper'
 
-class ValueTest < Minitest::Test
+class ValueTest < MiniTest::Unit::TestCase
 
   def test_value_initialize
     v = PinYin::Value.new('hello')
