@@ -91,4 +91,8 @@ class PinYinTest < Minitest::Test
     assert_equal ["máo", "fà"], PinYin.of_string('毛发', :unicode)
   end
 
+  def test_ue_combination
+    assert_equal "gong1 cheng2 lue3 di4", PinYin.sentence("攻城掠地", :ascii)
+  end
+
 end
