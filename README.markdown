@@ -1,4 +1,5 @@
 # ruby-pinyin: 支持多音字的汉字转拼音工具
+[![Build Status](https://travis-ci.org/janx/ruby-pinyin.svg?branch=master)](https://travis-ci.org/janx/ruby-pinyin)
 
 ruby-pinyin: zhī chí duō yīn zì de hàn zì zhuǎn pīn yīn gōng jù
 
