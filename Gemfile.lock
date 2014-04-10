@@ -1,0 +1,18 @@
+PATH
+  remote: .
+  specs:
+    ruby-pinyin (0.4.0)
+      rmmseg-cpp (~> 0.2.9)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rake (10.2.2)
+    rmmseg-cpp (0.2.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rake
+  ruby-pinyin!
