@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     ruby-pinyin (0.4.2)
-      rmmseg-cpp (~> 0.2.9)
+      rmmseg-cpp (~> 0.2)
 
 GEM
   remote: https://rubygems.org/
