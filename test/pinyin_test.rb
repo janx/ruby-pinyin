@@ -2,7 +2,7 @@
 
 require 'helper'
 
-class PinYinTest < Minitest::Unit::TestCase
+class PinYinTest < Minitest::Test
 
   def test_get_pinyin_of_multiple_pronunciation_character
     assert_equal ['hao3'], PinYin.of_string('好', true) # code 597D, value hao3
