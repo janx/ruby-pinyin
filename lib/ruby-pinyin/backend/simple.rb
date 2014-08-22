@@ -21,7 +21,11 @@ module PinYin
           else
             val = [t].pack('U*')
             if val =~ /^[_0-9a-zA-Z\s]*$/ # 复原，去除特殊字符,如全角符号等。
-              (res.last && res.last.english? ? res.last : res) << Value.new(val, true) # 如果上一个字符也是非中文则与之合并
+              if res.last && res.last.english?
+                res.last << Value.new(val, true)
+              elsif val != ' '
+                res << Value.new(val, true)
+              end
             elsif include_punctuations
               val = [Punctuation[code]].pack('H*') if Punctuation.include?(code)
               (res.last ? res.last : res) << Value.new(val, false)

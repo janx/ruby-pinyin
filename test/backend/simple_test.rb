@@ -35,4 +35,8 @@ class SimpleBackendTest < Minitest::Test
     assert_equal ["ni", "hao", "shi", "jie"], @backend.romanize("你好, 世界!", nil, false)
   end
 
+  def test_romanize_numbers_and_space
+    assert_equal ['rui', 'dian', '2009'], @backend.romanize("瑞典 2009")
+  end
+
 end
