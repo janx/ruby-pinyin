@@ -3,3 +3,4 @@ log/*.log
 pkg/
 *.gem
 .tags
+*.swp
