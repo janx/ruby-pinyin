@@ -95,4 +95,10 @@ class PinYinTest < Minitest::Test
     assert_equal "gong1 cheng2 lue3 di4", PinYin.sentence("攻城掠地", :ascii)
   end
 
+  def test_override_files
+    assert_equal ['guang3'], PinYin.romanize('广', :ascii)
+    PinYin.override_files = [File.expand_path('../fixtures/my.dat', __FILE__)]
+    assert_equal ['yan3'], PinYin.romanize('广', :ascii)
+  end
+
 end

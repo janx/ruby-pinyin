@@ -5,7 +5,7 @@ module PinYin
     class Simple
 
       def initialize(override_files=[])
-        @override_files = override_files
+        @override_files = override_files || []
       end
 
       def romanize(str, tone=nil, include_punctuations=false)

@@ -6,8 +6,8 @@ module PinYin
   module Backend
     class MMSeg
 
-      def initialize
-        @simple = Simple.new
+      def initialize(override_files=[])
+        @simple = Simple.new override_files
 
         RMMSeg::Dictionary.dictionaries.delete_if {|(type, path)| type == :words}
         RMMSeg::Dictionary.dictionaries.push [:words, File.expand_path('../../data/words.dic', __FILE__)]

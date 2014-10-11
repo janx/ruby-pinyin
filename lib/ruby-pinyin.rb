@@ -30,6 +30,11 @@ module PinYin
       of_string(str, tone, true).join(' ')
     end
 
+    def override_files=(files)
+      klass = backend ? backend.class : PinYin::Backend::MMSeg
+      self.backend = klass.new files
+    end
+
   end
 end
 
