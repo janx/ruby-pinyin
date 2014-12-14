@@ -30,7 +30,8 @@ module PinYin
 
         words = []
         while token = algor.next_token
-          words.push token.text.force_encoding("UTF-8")
+          s = token.text.force_encoding("UTF-8")
+          words.push(s) unless s =~ Punctuation.chinese_regexp
         end
         words
       end

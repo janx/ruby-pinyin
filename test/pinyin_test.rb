@@ -65,6 +65,10 @@ class PinYinTest < Minitest::Test
 
   def test_get_pinyin_sentence_with_unicode_punctuation
     assert_equal 'hello, world', PinYin.sentence('hello， world')
+    assert_equal 'cè shì, cè shì', PinYin.sentence('测试, 测试', :unicode)
+    assert_equal 'cè shì, cè shì', PinYin.sentence('测试，测试', :unicode)
+    assert_equal 'tiān lěng le, kuài huí jiā.', PinYin.sentence('天冷了, 快回家。', :unicode)
+    assert_equal 'tiān lěng le, kuài huí jiā.', PinYin.sentence('天冷了，快回家。', :unicode)
   end
 
   def test_get_pinyin_sentence_with_ascii_tone

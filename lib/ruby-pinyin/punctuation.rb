@@ -11,6 +11,10 @@ module PinYin
         @regexp
       end
 
+      def chinese_regexp
+        @chinese_regexp ||= /([\uFF00-\uFFEF]+)/
+      end
+
       def [](code)
         punctuations[code]
       end
