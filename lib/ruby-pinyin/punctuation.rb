@@ -12,7 +12,7 @@ module PinYin
       end
 
       def chinese_regexp
-        @chinese_regexp ||= /([\uFF00-\uFFEF]+)/
+        @chinese_regexp ||= /([\u3000-\u303F\uFF00-\uFFEF]+)/
       end
 
       def [](code)
