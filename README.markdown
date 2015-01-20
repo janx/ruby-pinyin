@@ -71,6 +71,10 @@ ruby-pinyin有两个PinYin::Backend: `PinYin::Backend::Simple` 以及`PinYin::Ba
 PinYin.backend = PinYin::Backend::Simple.new
 ```
 
+## 自定义发音 ##
+
+通过`PinYin.override_files`可以自定义某些字的发音。自定义的数据以普通文本文件存放，每行定义一个字的发音，以ASCII空格将汉字的unicode编码和拼音隔开。格式可参考[lib/ruby-pinyin/data/Mandarin.dat](https://github.com/janx/ruby-pinyin/blob/master/lib/ruby-pinyin/data/Mandarin.dat)文件。
+
 ## 欢迎任何帮助 ##
 
 如果你喜欢这个项目，请通过(不限)以下方式帮助她!
