@@ -17,6 +17,15 @@ class PinYinTest < Minitest::Test
     assert_equal ['jie', 'cao'], PinYin.of_string('节操')
   end
 
+  def test_mixed_in_random_garbage_characters
+    assert_equal ['jia', 'yi'], PinYin.of_string('×甲乙')
+    assert_equal ['jia', 'yi'], PinYin.of_string('甲×乙')
+    assert_equal ['jia', 'yi'], PinYin.of_string('甲乙×')
+    assert_equal ['jia', 'yi'], PinYin.of_string('×甲×乙')
+    assert_equal ['jia', 'yi'], PinYin.of_string('×甲×乙×')
+    assert_equal ['jia', 'yi', 'jia', 'yi'], PinYin.of_string('×甲×乙××甲×乙×')
+  end
+
   def test_get_pinyin_of_chinese_string_with_tone
     assert_equal ['jie2', 'cao1'], PinYin.of_string('节操', true)
   end
