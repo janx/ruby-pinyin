@@ -95,3 +95,4 @@ ruby-pinyin中的拼音数据由作者整理自互联网，你可以在ruby-piny
 * [Martin91](https://github.com/Martin91)
 * [jaxi](https://github.com/jaxi)
 * [jiangxin](https://github.com/jiangxin)
+* [forresty](https://github.com/forresty)
