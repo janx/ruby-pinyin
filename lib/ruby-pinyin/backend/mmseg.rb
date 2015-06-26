@@ -22,11 +22,6 @@ module PinYin
         base = @simple.romanize(str, tone, include_punctuations)
         patch = words.map {|w| format(w, tone) }.flatten
 
-        if base.size != patch.size
-          base.compact!
-          patch.compact!
-        end
-
         apply base, patch
       end
 

@@ -39,4 +39,13 @@ class SimpleBackendTest < Minitest::Test
     assert_equal ['rui', 'dian', '2009'], @backend.romanize("瑞典 2009")
   end
 
+  def test_romanize_string_mixed_unromanizable_characters
+    assert_equal ['×', 'jia', 'yi'], @backend.romanize('×甲乙')
+    assert_equal ['jia', '×', 'yi'], @backend.romanize('甲×乙')
+    assert_equal ['jia', 'yi', '×'], @backend.romanize('甲乙×')
+    assert_equal ['×', 'jia', '×', 'yi'], @backend.romanize('×甲×乙')
+    assert_equal ['×', 'jia', '×',  'yi', '×'], @backend.romanize('×甲×乙×')
+    assert_equal ['×', 'jia', '×', 'yi', '×', '×', 'jia', '×', 'yi', '×'], @backend.romanize('×甲×乙××甲×乙×')
+  end
+
 end

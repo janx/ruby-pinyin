@@ -26,9 +26,16 @@ module PinYin
               elsif val != ' '
                 res << Value.new(val, true)
               end
-            elsif include_punctuations
-              val = [Punctuation[code]].pack('H*') if Punctuation.include?(code)
-              (res.last ? res.last : res) << Value.new(val, false)
+            else
+              is_romanizable_punctuation = Punctuation.romanizable_punctuation?(code)
+              if include_punctuations && is_romanizable_punctuation
+                val = [Punctuation[code]].pack('H*')
+                (res.last ? res.last : res) << Value.new(val, false)
+              elsif include_punctuations && !is_romanizable_punctuation
+                (res.last ? res.last : res) << Value.new(val, false)
+              elsif !include_punctuations && !is_romanizable_punctuation && !Punctuation.english_punctuation?(val)
+                res << Value.new(val, false)
+              end
             end
           end
         end
