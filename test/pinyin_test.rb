@@ -103,6 +103,8 @@ class PinYinTest < Minitest::Test
     assert_equal ["dài", "fū"], PinYin.of_string('大夫', :unicode)
     assert_equal ["shān", "dài", "wáng"], PinYin.of_string('山大王', :unicode)
     assert_equal ["máo", "fà"], PinYin.of_string('毛发', :unicode)
+    assert_equal ["dà", "shān"], PinYin.of_string('大山', :unicode)
+    assert_equal ["bā", "dà", "shān", "rén"], PinYin.of_string('八大山人', :unicode)
   end
 
   def test_ue_combination
