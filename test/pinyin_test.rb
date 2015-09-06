@@ -79,6 +79,7 @@ class PinYinTest < Minitest::Test
     assert_equal 'tiān lěng le, kuài huí jiā.', PinYin.sentence('天冷了, 快回家。', :unicode)
     assert_equal 'tiān lěng le, kuài huí jiā.', PinYin.sentence('天冷了，快回家。', :unicode)
     assert_equal 'huáng fà chuí tiáo. qiān mò', PinYin.sentence('黄发垂髫。阡陌', :unicode)
+    assert_equal %w(ni hao zhong guo), PinYin.of_string('你好！@_@ 中国!')
   end
 
   def test_get_pinyin_sentence_with_ascii_tone

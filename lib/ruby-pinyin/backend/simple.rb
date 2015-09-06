@@ -20,7 +20,7 @@ module PinYin
             res << Value.new(format(readings, tone), false)
           else
             val = [t].pack('U*')
-            if val =~ /^[_0-9a-zA-Z\s]*$/ # 复原，去除特殊字符,如全角符号等。
+            if val =~ /^[0-9a-zA-Z\s]*$/ # 复原，去除特殊字符,如全角符号等。
               if res.last && res.last.english?
                 res.last << Value.new(val, true)
               elsif val != ' '
