@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ruby-pinyin (0.4.7)
+    ruby-pinyin (0.4.8)
       rmmseg-cpp (~> 0.2)
 
 GEM
@@ -18,3 +18,6 @@ DEPENDENCIES
   minitest (~> 5.4)
   rake
   ruby-pinyin!
+
+BUNDLED WITH
+   1.11.0
