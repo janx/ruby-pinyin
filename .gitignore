@@ -4,3 +4,4 @@ pkg/
 *.gem
 .tags
 *.swp
+Gemfile.lock

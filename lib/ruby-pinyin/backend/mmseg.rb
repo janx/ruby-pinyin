@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require 'rmmseg'
+require 'rmmseg-cpp-new'
 
 module PinYin
   module Backend
