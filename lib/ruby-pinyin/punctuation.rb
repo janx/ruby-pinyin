@@ -24,19 +24,17 @@ module PinYin
       end
 
       def punctuations
-        return @punctuations if @punctuations
-
-        @punctuations = {}
-        src = File.expand_path('../data/Punctuations.dat', __FILE__)
-        load_from src 
-
-        @punctuations
+        @punctuations ||=
+          {}.tap do |punctuations|
+            src = File.expand_path('data/Punctuations.dat', __dir__)
+            load_from punctuations, src
+          end
       end
 
-      def load_from(file)
+      def load_from(punctuations, file)
         File.readlines(file).map do |line|
           from, to = line.split(/\s+/)
-          @punctuations[from] = to
+          punctuations[from] = to
         end
       end
 
